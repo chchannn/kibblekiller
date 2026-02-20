@@ -2,7 +2,7 @@
 title: First post, demystifying agent evals
 author: chchannn
 pubDatetime: 2026-02-19T00:00:00Z
-description: My first blog post.
+description: My first blog post, and agent evals.
 tags:
   - journal
   - agent
