@@ -1,50 +1,39 @@
 ---
-import { getCollection } from "astro:content";
-import type { GetStaticPathsOptions } from "astro";
-import Main from "@/layouts/Main.astro";
 import Layout from "@/layouts/Layout.astro";
-import Header from "@/components/Header.astro";
-import Footer from "@/components/Footer.astro";
-import Card from "@/components/Card.astro";
-import Pagination from "@/components/Pagination.astro";
+import { getCollection } from "astro:content";
 import getUniqueTags from "@/utils/getUniqueTags";
 import getPostsByTag from "@/utils/getPostsByTag";
-import { SITE } from "@/config";
+import { getPath } from "@/utils/getPath";
 
-export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+export async function getStaticPaths() {
   const posts = await getCollection("blog");
   const tags = getUniqueTags(posts);
 
-  return tags.flatMap(({ tag, tagName }) => {
-    const tagPosts = getPostsByTag(posts, tag);
-
-    return paginate(tagPosts, {
-      params: { tag },
-      props: { tagName },
-      pageSize: SITE.postPerPage,
-    });
-  });
+  return tags.map(({ tag, tagName }) => ({
+    params: { tag, page: undefined },
+    props: { tag, tagName, posts: getPostsByTag(posts, tag) },
+  }));
 }
 
-const params = Astro.params;
-const { tag } = params;
-const { page, tagName } = Astro.props;
+const { tag, tagName, posts } = Astro.props;
 ---
 
-<Layout title={`Tag: ${tagName} | ${SITE.title}`}>
-  <Header />
-  <Main
-    pageTitle={[`Tag:`, `${tagName}`]}
-    titleTransition={tag}
-    pageDesc={`All the articles with the tag "${tagName}".`}
-  >
-    <h1 slot="title" transition:name={tag}>{`Tag:${tag}`}</h1>
-    <ul>
-      {page.data.map(data => <Card {...data} />)}
-    </ul>
-  </Main>
-
-  <Pagination {page} />
-
-  <Footer noMarginTop={page.lastPage > 1} />
+<Layout title={`#${tagName}`}>
+  <h1>#{tagName}</h1>
+  <ul class="post-list">
+    {posts.map(({ data, id, filePath }: any) => (
+      <li>
+        <time datetime={data.pubDatetime.toISOString()}>
+          {data.pubDatetime.toLocaleDateString("en-US", {
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+          })}
+        </time>
+        <a href={getPath(id, filePath)}>{data.title}</a>
+      </li>
+    ))}
+  </ul>
+  <hr />
+  <p><a href="/tags">&larr; All tags</a></p>
 </Layout>

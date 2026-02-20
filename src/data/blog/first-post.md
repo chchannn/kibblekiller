@@ -21,4 +21,4 @@ Tomorrow I'll work on seeding the data into our dataset management tool LangSmit
 
 In addition to my main project, I'm also on-call this week. I was paged 3 times at 7 this morning. Nothing was serious — lots of overly sensitive alerts. Regardless of the noise, on-call has honestly been easy because I can just throw the alerts and traces to our internal background coding agent to triage while I'm doing other tasks. Sonnet 3.5 could already do a decent job accurately triaging most incidents, and now with Opus it's only gotten better.
 
-Today is my dear colleague Apollo's last day. I am very sad.
+Today was my dear colleague Apollo's last day. I was very sad.

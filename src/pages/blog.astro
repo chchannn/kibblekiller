@@ -8,21 +8,8 @@ const posts = await getCollection("blog");
 const sortedPosts = getSortedPosts(posts);
 ---
 
-<Layout>
-  <h1>Ni hao</h1>
-  <p>
-    I'm currently building AI agents in Oregon, 
-    at a branding/marketing tech company. This blog is where I write about
-    my daily learning and reflections on software engineering.
-  </p>
-  <p>
-    When I'm not talking to Claude Code, I'm hanging out with my two cats Lester and Pearl,
-    and my Lagotto Romagnolo Sofie — a nose work champion.
-  </p>
-
-  <hr />
-
-  <h2>Recent posts</h2>
+<Layout title="Blog">
+  <h1>Blog</h1>
   <ul class="post-list">
     {sortedPosts.map(({ data, id, filePath }) => (
       <li>
