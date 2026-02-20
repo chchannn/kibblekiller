@@ -29,10 +29,9 @@ const pageTitle = title === SITE.title ? title : `${title} | ${SITE.title}`;
   </head>
   <body>
     <nav>
-      <a href="/"><strong>{SITE.title}</strong></a>
+      <a href="/" class="site-title"><strong>{SITE.title}</strong></a>
+      <a href="/">Home</a>
       <a href="/blog">Blog</a>
-      <a href="/tags">Tags</a>
-      <a href="/rss.xml">RSS</a>
     </nav>
 
     <slot />

@@ -53,7 +53,7 @@ a {
 }
 
 a:visited {
-  color: var(--link-visited);
+  color: var(--link);
 }
 
 a:hover {
@@ -69,6 +69,11 @@ nav {
 nav a {
   margin-right: 1em;
   text-decoration: none;
+}
+
+nav a.site-title,
+nav a.site-title:visited {
+  color: var(--heading);
 }
 
 nav a:hover {

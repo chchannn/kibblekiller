@@ -1,40 +1,21 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { getCollection } from "astro:content";
-import getSortedPosts from "@/utils/getSortedPosts";
-import { getPath } from "@/utils/getPath";
-
-const posts = await getCollection("blog");
-const sortedPosts = getSortedPosts(posts);
 ---
 
 <Layout>
   <h1>Ni hao</h1>
   <p>
-    I'm currently building AI agents in Oregon, 
-    at a branding/marketing tech company. This blog is where I write about
+    I'm currently addicted to Claude Code. This blog is where I write about
     my daily learning and reflections on software engineering.
   </p>
   <p>
     When I'm not talking to Claude Code, I'm hanging out with my two cats Lester and Pearl,
     and my Lagotto Romagnolo Sofie — a nose work champion.
   </p>
-
-  <hr />
-
-  <h2>Recent posts</h2>
-  <ul class="post-list">
-    {sortedPosts.map(({ data, id, filePath }) => (
-      <li>
-        <time datetime={data.pubDatetime.toISOString()}>
-          {data.pubDatetime.toLocaleDateString("en-US", {
-            day: "2-digit",
-            month: "short",
-            year: "numeric",
-          })}
-        </time>
-        <a href={getPath(id, filePath)}>{data.title}</a>
-      </li>
-    ))}
-  </ul>
+  <p>
+    <a href="https://github.com/chchannn">GitHub</a> &middot;
+    <a href="https://x.com/chchannn">X</a> &middot;
+    <a href="https://www.linkedin.com/in/chchennn/">LinkedIn</a> &middot;
+    <a href="/rss.xml">RSS</a>
+  </p>
 </Layout>
