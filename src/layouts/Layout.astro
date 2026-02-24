@@ -26,6 +26,15 @@ const pageTitle = title === SITE.title ? title : `${title} | ${SITE.title}`;
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="alternate" type="application/rss+xml" title={SITE.title} href="/rss.xml" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VK0MW7SPF7" is:inline></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-VK0MW7SPF7');
+    </script>
   </head>
   <body>
     <nav>
